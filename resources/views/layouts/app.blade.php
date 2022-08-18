@@ -14,18 +14,31 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/tienda">Tienda</a>
-        <a href="/nosotros">Nosotros</a>
-    </nav>
-    <h1>@yield('title')</h1>
-    <hr />
+<body class="bg-gray-100">
+    <header class="p-5 border-b bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-4xl font-extrabold">DevStagram</h1>
+            <nav>
+                <a class="font-bold uppercase text-gray-600" href="#">Login</a>
+                <a class="font-bold uppercase text-gray-600" href="/crear-cuenta">Crear cuenta</a>
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-10">
+        <h2 class="font-black text-center text-3xl mt-10">@yield('titulo')</h2>
+        @yield('contenido')
+    </main>
+
+    <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+        DevStagram - Todos los derechos reservados {{ now()->year }}
+    </footer>
+
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    @yield('content')
+
     <script src="" async defer></script>
 </body>
 
