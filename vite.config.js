@@ -8,4 +8,13 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    // He añadido localhost ya que al estar el proyecto en WSL no es capaz de solicitar correctamente los archivos
+    server: {
+        hmr: {
+            host: 'localhost',
+        },
+        watch: {
+            usePolling: true
+        }
+    },
 });
