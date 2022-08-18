@@ -19,7 +19,7 @@
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-4xl font-extrabold">DevStagram</h1>
             <nav>
-                <a class="font-bold uppercase text-gray-600" href="#">Login</a>
+                <a class="font-bold uppercase text-gray-600" href="/autenticar">Login</a>
                 <a class="font-bold uppercase text-gray-600" href="/crear-cuenta">Crear cuenta</a>
 
             </nav>
@@ -27,11 +27,11 @@
     </header>
 
     <main class="container mx-auto mt-10">
-        <h2 class="font-black text-center text-3xl mt-10">@yield('titulo')</h2>
+        <h2 class="font-black text-center text-3xl mt-10 mb-5">@yield('titulo')</h2>
         @yield('contenido')
     </main>
 
-    <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+    <footer class="text-center p-5 text-gray-500 font-bold uppercase mt-10">
         DevStagram - Todos los derechos reservados {{ now()->year }}
     </footer>
 
