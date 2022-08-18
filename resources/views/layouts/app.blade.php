@@ -20,7 +20,7 @@
             <h1 class="text-4xl font-extrabold">DevStagram</h1>
             <nav>
                 <a class="font-bold uppercase text-gray-600" href="/autenticar">Login</a>
-                <a class="font-bold uppercase text-gray-600" href="/crear-cuenta">Crear cuenta</a>
+                <a class="font-bold uppercase text-gray-600" href="{{ route('register') }}">Crear cuenta</a>
 
             </nav>
         </div>
