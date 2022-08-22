@@ -19,9 +19,11 @@ class RegisterController extends Controller
         $this->validate($request, [
             // 'name' => ['required', 'min:5'],
             'name' => 'required|min:5|max:30',
-            'username' => 'required|min:3|max:30',
-            'email' => 'required|email|max:60',
-            'password' => 'required'
+            'username' => 'required|unique:users|min:3|max:30',
+            'email' => 'required|unique:users|email|max:60',
+            'password' => 'required|confirmed|min:8'
         ]);
+
+        dd('creando usuario...');
     }
 }
