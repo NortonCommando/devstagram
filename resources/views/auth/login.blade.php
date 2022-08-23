@@ -24,6 +24,7 @@
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">Password </label>
                     <input type="password" id="password" name="password" placeholder="Password"
@@ -32,6 +33,12 @@
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div class="mb-5">
+                    <input type="checkbox" class="cursor-pointer" name="remember" id="remember" />
+                    <label for="remember" class="text-gray-500 cursor-pointer">Mantener sesión abierta</label>
+                </div>
+
                 <input type="submit" value="Iniciar sesión"
                     class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold p-3 text-white rounded-lg w-full" />
             </form>
