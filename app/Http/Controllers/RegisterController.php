@@ -45,7 +45,9 @@ class RegisterController extends Controller
 
         // Otra forma
         auth()->attempt($request->only('email', 'password'));
-        
-        return redirect()->route('posts.index');
+
+        return redirect()->route('posts.index', [
+            'user'=>auth()->user()
+        ]);
     }
 }
