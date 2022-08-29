@@ -16,7 +16,7 @@
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">Nombre </label>
                     <input type="text" id="name" name="name" placeholder="Tu nombre"
                         class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
-                        value="{{old('name')}}" />
+                        value="{{ old('name') }}" />
                     @error('name')
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">{{ $message }}</p>
                     @enderror
@@ -24,8 +24,8 @@
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">Nombre de usuario </label>
                     <input type="text" id="username" name="username" placeholder="Tu nombre de usuario"
-                    class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
-                    value="{{old('username')}}" />
+                        class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
+                        value="{{ old('username') }}" />
                     @error('username')
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">{{ $message }}</p>
                     @enderror
@@ -33,8 +33,8 @@
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Email </label>
                     <input type="text" id="email" name="email" placeholder="Email"
-                    class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror"
-                    value="{{old('email')}}" />
+                        class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror"
+                        value="{{ old('email') }}" />
                     @error('email')
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">{{ $message }}</p>
                     @enderror
@@ -42,7 +42,7 @@
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">Password </label>
                     <input type="password" id="password" name="password" placeholder="Password"
-                    class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror" />
+                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror" />
                     @error('password')
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">{{ $message }}</p>
                     @enderror
