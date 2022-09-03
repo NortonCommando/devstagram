@@ -19,7 +19,7 @@
             </form>
         </div>
         <div class="md:w-1/2 p-10 mb-5 bg-white rounded-lg shadow-xl mt-10 md:mt-0">
-            <form action="{{ route('register') }}" method="POST" novalidate>
+            <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -37,7 +37,7 @@
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Descripción </label>
                     <textarea id="descripcion" name="descripcion" placeholder="Descripción de la publicación"
-                        class="border p-3 w-full rounded-lg @error('descripcion') border-red-500 @enderror"></textarea>
+                        class="border p-3 w-full rounded-lg @error('descripcion') border-red-500 @enderror">{{ old('descripcion')}}</textarea>
                     @error('descripcion')
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">
                             {{ $message }}
