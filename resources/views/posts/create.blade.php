@@ -9,8 +9,6 @@
 @endpush
 
 @section('contenido')
-
-
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
             <form action="{{ route('imagenes.store') }}" method="POST" enctype="multipart/form-data" id="dropzone"
@@ -37,8 +35,16 @@
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Descripción </label>
                     <textarea id="descripcion" name="descripcion" placeholder="Descripción de la publicación"
-                        class="border p-3 w-full rounded-lg @error('descripcion') border-red-500 @enderror">{{ old('descripcion')}}</textarea>
+                        class="border p-3 w-full rounded-lg @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
                     @error('descripcion')
+                        <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+                <div class="mb-5">
+                    <input name="imagen" type="hidden" value="{{ old('imagen') }}"/>
+                    @error('imagen')
                         <p class="bg-red-500 mt-5 text-white rounded-lg text-sm text-center p-1">
                             {{ $message }}
                         </p>
