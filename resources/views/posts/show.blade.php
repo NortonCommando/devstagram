@@ -16,7 +16,17 @@
                 {{ $post->created_at->diffForHumans() }}
             </p>
             <p class="mt-5">{{ $post->descripcion }}</p>
+            @auth
+                @if (auth()->user()->id == $post->user_id)
+                    <form>
+                        <input type="submit" class="bg-red-500 hover:bg-red-700 rounded text-white mt-4 p-2 cursor-pointer"
+                            value="Eliminar publicacion" />
+                    </form>
+                @endif
+            @endauth
+
         </div>
+
         <div class="md:w-1/2">
             <div class="shadow bg-white mb-5  p-5">
                 @auth
