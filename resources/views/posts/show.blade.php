@@ -18,9 +18,12 @@
             <p class="mt-5">{{ $post->descripcion }}</p>
             @auth
                 @if (auth()->user()->id == $post->user_id)
-                    <form>
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
                         <input type="submit" class="bg-red-500 hover:bg-red-700 rounded text-white mt-4 p-2 cursor-pointer"
                             value="Eliminar publicacion" />
+
                     </form>
                 @endif
             @endauth
