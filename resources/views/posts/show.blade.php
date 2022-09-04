@@ -20,8 +20,15 @@
         <div class="md:w-1/2">
             <div class="shadow bg-white mb-5  p-5">
                 @auth
-                    <p class="text-lg font-bold text-center mb-4">Comentarios</p>
-                    <form>
+                    <p class="font-bold text-center mb-4">Comentarios</p>
+                    @if (session('mensaje'))
+                        <div
+                            class="bg-green-500 p-2 rounded-lg mb-6
+                         text-white text-center uppercase font-bold text-sm">
+                            {{ session('mensaje') }}
+                        </div>
+                    @endif
+                    <form action="{{ route('comentarios.store', ['user' => $post->user, 'post' => $post]) }}" method="POST">
                         @csrf
                         <div class="mb-5">
                             <label for="comentario" class="mb-2 block uppercase text-gray-500 font-bold">
