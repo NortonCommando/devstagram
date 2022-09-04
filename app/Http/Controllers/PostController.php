@@ -17,8 +17,8 @@ class PostController extends Controller
     public function index(User $user)
     {
 
-        // $posts = Post::where('user_id', $user->id)->get();
-        $posts = $user->posts;
+        $posts = Post::where('user_id', $user->id)->paginate(20);
+
 
         return view('dashboard', [
             'user' => $user,
@@ -54,7 +54,7 @@ class PostController extends Controller
             'descripcion'=>$request->descripcion,
             'imagen'=>$request->imagen,
             'user_id'=>auth()->user()->id
-        ]);  
+        ]);
         $post->save(); */
 
         //Tercera forma con relaciones
