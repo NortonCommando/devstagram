@@ -12,4 +12,9 @@ class Comentario extends Model
     protected $fillable = [
         'user_id', 'post_id', 'comentario'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
