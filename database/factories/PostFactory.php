@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
@@ -30,10 +31,12 @@ class PostFactory extends Factory
 
     public function copyImage($origin, $destiny)
     {
-        copy(
-            public_path() . "/uploads/" . $origin,
-            public_path() . "/uploads/" . $destiny
-        );
+        echo PHP_EOL.$origin;
+        $imagenServidor = Image::make(public_path('assets_example') . '/' . $origin);
+        $imagenServidor->fit(1000, 1000, null, 'center');
+        $imagenServidor->save(public_path('uploads') . '/' . $destiny);
+        unset($imagenServidor);
+
         return $destiny;
     }
 }
