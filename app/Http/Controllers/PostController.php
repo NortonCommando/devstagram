@@ -14,20 +14,30 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(User $user){
-        return view('dashboard', ['user'=>$user]);
+    public function index(User $user)
+    {
+
+        // $posts = Post::where('user_id', $user->id)->get();
+        $posts = $user->posts;
+
+        return view('dashboard', [
+            'user' => $user,
+            'posts' => $posts,
+        ]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('posts.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $this->validate($request, [
-            'titulo'=>'required|max:255',
-            'descripcion'=>'required',
-            'imagen'=>'required'
+            'titulo' => 'required|max:255',
+            'descripcion' => 'required',
+            'imagen' => 'required'
         ]);
 
         /* Post::create([
@@ -39,7 +49,7 @@ class PostController extends Controller
 
         // Otra forma
 
-       /*  $post = new Post([
+        /*  $post = new Post([
             'titulo'=>$request->titulo,
             'descripcion'=>$request->descripcion,
             'imagen'=>$request->imagen,
@@ -49,13 +59,13 @@ class PostController extends Controller
 
         //Tercera forma con relaciones
         $request->user()->posts()->create([
-            'titulo'=>$request->titulo,
-            'descripcion'=>$request->descripcion,
-            'imagen'=>$request->imagen,
-            'user_id'=>auth()->user()->id,
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id,
         ]);
 
-        
+
 
         return redirect()->route('posts.index', auth()->user()->username);
     }
