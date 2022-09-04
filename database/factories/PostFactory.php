@@ -20,14 +20,20 @@ class PostFactory extends Factory
         return [
             'titulo' => $this->faker->sentence(5),
             'descripcion' => $this->faker->sentence(20),
-            'imagen' =>
-            $this->faker->randomElement([
-                '1c21c93c-eba9-484a-bf4f-66392b072cc2.jpg',
-                '1fb394f2-ab3e-4b3b-957a-18a4b3475b0e.jpg',
-                '3964eafb-3996-40aa-8d64-b0240887d5f8.jpg',
-                'a846076b-4323-47f9-9900-e86d517ac4f6.jpg',
-            ]),
+            'imagen' => $this->copyImage(
+                $this->faker->numberBetween(1,20).".jpg",
+                $this->faker->uuid() . ".jpg"
+            ),
             'user_id' => $this->faker->randomElement([1, 3, 4, 5, 6, 7, 8])
         ];
+    }
+
+    public function copyImage($origin, $destiny)
+    {
+        copy(
+            public_path() . "/uploads/" . $origin,
+            public_path() . "/uploads/" . $destiny
+        );
+        return $destiny;
     }
 }
