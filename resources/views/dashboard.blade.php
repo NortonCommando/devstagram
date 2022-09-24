@@ -28,12 +28,12 @@
                     @endauth
                 </div>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
-                    <span class="font-normal">Seguidores</span>
+                    {{ $user->followers->count() }}
+                    <span class="font-normal">@choice('Seguidor|Seguidores', $user->followers->count()) </span>
 
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{ $user->followings->count() }}
                     <span class="font-normal">Siguiendo</span>
 
                 </p>
@@ -42,6 +42,45 @@
                     <span class="font-normal">Post</span>
 
                 </p>
+                @auth
+                    @if (!($user->id === auth()->user()->id))
+                        @if ($user->checkFollowing(auth()->user()))
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button
+                                    class="flex gap-2 p-1 px-4 bg-red-800 hover:bg-red-700 rounded-md shadow-sm text-white text-sm border-red-300 border"
+                                    type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+
+
+                                    Dejar de seguir</button>
+                            </form>
+                        @else
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+
+                                <button
+                                    class="flex gap-2 p-1 px-4 bg-gray-200 hover:bg-gray-300 rounded-md shadow-sm text-gray-800 text-sm border-gray-300 border"
+                                    type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+
+
+
+                                    Seguir</button>
+                            </form>
+                        @endif
+                    @endif
+                @endauth
+
             </div>
         </div>
     </div>
