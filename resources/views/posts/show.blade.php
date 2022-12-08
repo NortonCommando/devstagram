@@ -11,30 +11,6 @@
             <div class="p-3 flex items-center gap-4">
                 @auth
                     <livewire:like-post :post="$post" />
-                    {{-- @if (!$post->checkLike(auth()->user()))
-                        <form method="POST" action="{{ route('posts.likes.store', $post) }}">
-                            @csrf
-                            <div class="my-4">
-
-                            </div>
-                        </form>
-                    @else
-                        <form method="POST" action="{{ route('posts.likes.destroy', $post) }}">
-                            @method('delete')
-                            @csrf
-                            <div class="my-4">
-                                <button type="submit">
-                                    <svg class="w-6 h-6" fill="red" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
-                    @endif --}}
-
                 @endauth
                 <p>{{ $post->likes->count() }} likes</p>
             </div>
