@@ -12,7 +12,7 @@
                 @auth
                     <livewire:like-post :post="$post" />
                 @endauth
-                <p>{{ $post->likes->count() }} likes</p>
+
             </div>
             <a class="font-bold italic" href="{{ route('posts.index', $post->user) }}">{{ $post->user->username }} </a>
             <p class="text-sm text-gray-500">
