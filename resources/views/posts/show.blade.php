@@ -10,7 +10,10 @@
             <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post {{ $post->titulo }}" />
             <div class="p-3 flex items-center gap-4">
                 @auth
-                    <livewire:like-post />
+                    @php
+                        $mensaje = 'Hola mundo desde una variables sd as';
+                    @endphp
+                    <livewire:like-post :post="$post" />
                     @if (!$post->checkLike(auth()->user()))
                         <form method="POST" action="{{ route('posts.likes.store', $post) }}">
                             @csrf
