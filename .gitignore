@@ -1,9 +1,10 @@
 /node_modules
-/public/build
 /public/hot
 /public/storage
-/public/perfiles/*
 /public/uploads/*
+!/public/uploads/index.php
+/public/perfiles/*
+!/public/perfiles/index.php
 /storage/*.key
 /vendor
 .env
