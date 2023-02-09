@@ -2,5 +2,5 @@
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_URI} !/public
-RewriteRule ^(.*)$ public $1
+RewriteRule ^(.*)$ public/$1
 </IfModule>
